@@ -1,0 +1,36 @@
+# https://github.com/sogko/slumber-sessions
+# https://github.com/sogko/slumber/blob/master/main.go
+# https://github.com/GoogleCloudPlatform/golang-samples/blob/master/getting-started/bookshelf/db_mysql.go
+# https://github.com/go-sql-driver/mysql
+# http://jasonwatmore.com/post/2017/09/16/react-redux-user-registration-and-login-tutorial-example
+version: '2'
+services:  
+  mysqldb:
+    image: mysql:5.5
+    ports:
+      - 3306:3306
+    volumes:
+      - ./data:/var/lib/mysql
+    environment:
+      - MYSQL_USER=usrtodo
+      - MYSQL_ROOT_PASSWORD=password
+      - MYSQL_DATABASE=todo-db
+  php-my-admin:
+    image: phpmyadmin/phpmyadmin:latest
+    links:
+      - mysqldb
+    ports:
+      - 80:80
+    environment:
+      - PMA_ARBITRARY=1
+    depends_on:
+      - mysqldb
+  web:
+    container_name: web-go
+    ports:
+      - "6060:8080"
+    image: go-api:latest
+    depends_on:
+      - mysqldb
+    links:
+      - mysqldb

@@ -1,0 +1,38 @@
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="mfelipe">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="mfelipe">
+
+    <title>Another todo-app</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ"
+      crossorigin="anonymous">
+
+    <!-- Render the partial template called `css-$current_template` here -->
+    {{ partial "css" }}
+  </head>
+
+  <body>    
+
+    <!-- render the partial template called `header-$current_template` here -->
+    {{ partial "header" }}
+
+    <div id="root">
+
+      <!-- Render the current template here -->
+      {{ yield }}
+    </div>
+    <!-- render the partial template called `footer-$current_template` here -->
+    {{ partial "footer" }}
+  </body>
+</html>
